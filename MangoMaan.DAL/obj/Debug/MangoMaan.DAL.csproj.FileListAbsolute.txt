@@ -1,0 +1,6 @@
+D:\Dotnet\source\repos\MangoMaan.DAL\bin\Debug\MangoMaan.DAL.dll
+D:\Dotnet\source\repos\MangoMaan.DAL\bin\Debug\MangoMaan.DAL.pdb
+D:\Dotnet\source\repos\MangoMaan.DAL\obj\Debug\MangoMaan.DAL.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\MangoMaan.DAL\obj\Debug\MangoMaan.DAL.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\MangoMaan.DAL\obj\Debug\MangoMaan.DAL.dll
+D:\Dotnet\source\repos\MangoMaan.DAL\obj\Debug\MangoMaan.DAL.pdb

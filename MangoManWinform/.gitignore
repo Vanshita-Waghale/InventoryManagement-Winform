@@ -1,0 +1,13 @@
+# Build results
+bin/
+obj/
+*.exe
+*.dll
+
+# VS settings
+.vs/
+*.user
+*.suo
+
+# Others
+*.log
