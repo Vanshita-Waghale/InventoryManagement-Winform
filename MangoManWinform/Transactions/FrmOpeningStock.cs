@@ -9,29 +9,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MangoMaan.DAL;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace MangoManWinform.Transactions
 {
     public partial class FrmOpeningStock : Form
     {
         MangoMaan.DAL.CommonCommands Commands;
+        int EditingOpeningStockID = 0;
+        bool isUpdating = false;
+
         public FrmOpeningStock()
         {
             InitializeComponent();
             Commands = new MangoMaan.DAL.CommonCommands();
-            ClearForm();
+            DeleteCommandText = "DELETE FROM tblOpeningStock WHERE OpeningStockID = @OpeningStockID";
+
+
         }
 
         protected override void OnLoad(EventArgs e)
         {
             txtItem.ValueMember = "ItemID";
             txtItem.DisplayMember = "ItemName";
-            txtItem.DataSource = Commands.GetData("Select ItemID, ItemName from tblItem Order by ItemName");
+            txtItem.DataSource = Commands.GetData("SELECT ItemID, ItemName FROM tblItem ORDER BY ItemName");
+            txtItem.SelectedIndexChanged += txtItem_SelectedIndexChanged;
             base.OnLoad(e);
+            ClearForm(true);
+
         }
 
         private void FrmOpeningStock_Load(object sender, EventArgs e)
         {
+            e.Cancel = true; // This will prevent the form from closing
+
 
         }
 
@@ -44,45 +55,39 @@ namespace MangoManWinform.Transactions
         {
 
         }
-        bool isUpdating = false; // Prevents infinite loops between controls
+        //bool isUpdating = false; // Prevents infinite loops between controls
 
         public SqlException CurrentException { get; private set; }
         public string DeleteCommandText { get; private set; }
 
-        int EditingOpeningStockID;
+        //int EditingOpeningStockID;
         private void txtItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (isUpdating) return;
+            if (txtItem.SelectedValue == null || !int.TryParse(txtItem.SelectedValue.ToString(), out int itemId))
+                return;
 
-            //isUpdating = true;
-            //textSelectedItemid.Text =
-            //    (txtItem.SelectedIndex >= 0) ? txtItem.SelectedIndex.ToString() : "";
-            //isUpdating = false;
-            if (txtItem.SelectedIndex >= 0)
+            DataTable res = Commands.GetData(
+            @"SELECT TOP 1 * FROM tblOpeningStock 
+             WHERE ItemID = @ItemID 
+             ORDER BY rcdt DESC", // or use OpeningStockID DESC if rcdt isn't reliable
+             new SqlParameter("ItemID", itemId)
+             );
+
+            if (res.Rows.Count > 0)
             {
-                DataTable res = Commands.GetData(
-                    "SELECT * FROM tblOpeningStock WHERE ItemID = @ItemID",
-                    new SqlParameter("ItemID", (int)txtItem.SelectedValue)
-                );
-
-                if (res.Rows.Count > 0)
-                {
-                    DataRow row = res.Rows[0];
-                    EditingOpeningStockID = (int)row["OpeningStockID"];
-                    txtQuantity.Text = row["Quantity"].ToString();
-                    txtPurchaseRate.Text = row["PurchaseRate"].ToString();
-                    txtNarration.Text = row["Narration"].ToString();
-                    btnDelete.Visible = true; // Show delete button if record exists
-                }
-                else
-                {
-                    ClearForm(true);
-                }
+                DataRow row = res.Rows[0];
+                EditingOpeningStockID = Convert.ToInt32(row["OpeningStockID"]);
+                txtQuantity.Text = row["Quantity"].ToString();
+                txtPurchaseRate.Text = row["PurchaseRate"].ToString();
+                txtNarration.Text = row["Narration"].ToString();
+                btnDelete.Visible = true;
             }
-
+            else
+            {
+                ClearForm(false);
+            }
         }
 
-        
         private void textSelectedItemid_TextChanged(object sender, EventArgs e)
         {
             if (isUpdating) return;
@@ -103,7 +108,7 @@ namespace MangoManWinform.Transactions
         }
 
         private void txtItem_Validating(object sender, CancelEventArgs e)
-        { 
+        {
             if (txtItem.SelectedIndex == -1) // -1 means no selection
             {
                 errorProvider1.SetError(txtItem, "Please select an item.");
@@ -149,146 +154,190 @@ namespace MangoManWinform.Transactions
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // Trigger validation for all controls
             this.ValidateChildren();
-            this.Validate(false);
-            this.ValidateChildren(ValidationConstraints.None);
+
             string Errors = null;
-            string ErrorText = null;
             Control ErrorControl = null;
 
-            ErrorText = errorProvider1.GetError(txtItem);
-            if (!string.IsNullOrWhiteSpace(ErrorText))
+            // Validate txtItem
+            string itemError = errorProvider1.GetError(txtItem);
+            if (!string.IsNullOrWhiteSpace(itemError))
             {
-                Errors += (!String.IsNullOrWhiteSpace(Errors) ? "\r\n" : "") + ErrorText;
-                if (ErrorControl == null) { ErrorControl = txtItem; }
-
+                Errors += itemError;
+               
+                if (ErrorControl == null)
+                {
+                    ErrorControl = txtItem;
+                }
             }
 
-            ErrorText = errorProvider1.GetError(txtQuantity);
-            if (!string.IsNullOrWhiteSpace(ErrorText))
+            // Validate txtQuantity
+            string quantityError = errorProvider1.GetError(txtQuantity);
+            if (!string.IsNullOrWhiteSpace(quantityError))
             {
-                Errors += (!String.IsNullOrWhiteSpace(Errors) ? "\r\n" : "") + ErrorText;
-                if (ErrorControl == null) { ErrorControl = txtQuantity; }
-
-            }
-            ErrorText = errorProvider1.GetError(txtPurchaseRate);
-            if (!string.IsNullOrWhiteSpace(ErrorText))
-            {
-                Errors += (!String.IsNullOrWhiteSpace(Errors) ? "\r\n" : "") + ErrorText;
-                if (ErrorControl == null) { ErrorControl = txtPurchaseRate; }
-
+                Errors += (Errors != null ? "\r\n" : "") + quantityError;
+                if (ErrorControl == null)
+                {
+                    ErrorControl = txtItem;
+                }
             }
 
+            // Validate txtPurchaseRate
+            string rateError = errorProvider1.GetError(txtPurchaseRate);
+            if (!string.IsNullOrWhiteSpace(rateError))
+            {
+                Errors += (Errors != null ? "\r\n" : "") + rateError;
+                if (ErrorControl == null)
+                {
+                    ErrorControl = txtItem;
+                }
+            }
 
-
+            // If any errors exist, show message and return
             if (Errors != null)
             {
-                MessageBox.Show($"Please fix following validation errors before saving.\r\n{Errors}", "Saving", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                if (ErrorControl != null)
-                {
-                    ErrorControl.Focus();
-                }
+                MessageBox.Show($"Please fix the following errors:\r\n{Errors}", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ErrorControl?.Focus();
                 return;
             }
+
+            // Prepare parameters
             SqlParameter[] paras = new SqlParameter[]
             {
-                new SqlParameter("OpeningStockID", EditingOpeningStockID),
-                new SqlParameter("ItemID", (int)txtItem.SelectedValue),
-                new SqlParameter("Quantity",  decimal.Parse(txtQuantity.Text)),
-                new SqlParameter("PurchaseRate", decimal.Parse(txtPurchaseRate.Text)),
-                new SqlParameter("Narration", txtNarration.Text),
+        new SqlParameter("OpeningStockID", EditingOpeningStockID),
+        new SqlParameter("ItemID", (int)txtItem.SelectedValue),
+        new SqlParameter("Quantity", decimal.Parse(txtQuantity.Text)),
+        new SqlParameter("PurchaseRate", decimal.Parse(txtPurchaseRate.Text)),
+        new SqlParameter("Narration", txtNarration.Text),
             };
-            string CommandText;
-            if (EditingOpeningStockID == 0)
+
+            // Choose command based on insert or update
+            string CommandText = EditingOpeningStockID == 0
+                ? @"INSERT INTO tblOpeningStock(ItemID, Quantity, PurchaseRate, Narration, rcdt)
+           VALUES(@ItemID, @Quantity, @PurchaseRate, @Narration, GETDATE())"
+                : @"UPDATE tblOpeningStock SET ItemID = @ItemID, Quantity = @Quantity, PurchaseRate = @PurchaseRate,
+           Narration = @Narration, redt = GETDATE() WHERE OpeningStockID = @OpeningStockID";
+
+            // Execute command
+            int result = Commands.ExecuteNonQuery(CommandText, paras);
+
+            // Show result
+            if (result > 0)
             {
-                CommandText = @"Insert into tblOpeningStock( ItemID, Quantity, PurchaseRate, Narration, rcdt)
-            Values(@ItemID, @Quantity, @PurchaseRate, @Narration, GetDate())";
+                MessageBox.Show("Opening Stock saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearForm(true);
             }
             else
             {
-                CommandText = @"Update tblOpeningStock set ItemID = @ItemID, Quantity = @Quantity, PurchaseRate = @PurchaseRate, Narration = @Narration, redt = GetDate() where OpeningStockID = @OpeningStockID";
+                string errorMessage = "Error saving Opening Stock.";
+                if (Commands.CurrentException is Exception ex)
+                    errorMessage += "\r\nDetails: " + ex.Message;
 
-                int Result = Commands.ExecuteNonQuery(CommandText, paras);
-                if (Result > 0)
-                {
-                    MessageBox.Show("Opening Stock saved successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearForm();
-                }
-                else
-                {
-                    string errorMessage = "Error saving Opening Stock. Please try again.";
-
-                    if (Commands.CurrentException is Exception ex)
-                    {
-                        errorMessage += "\r\nDetails: " + ex.Message;
-                    }
-
-                    MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                txtItem.Focus();
+                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            txtItem.Focus();
         }
-        void ClearForm(bool PreventItem = false)
+        private void ClearForm(bool resetItem = false)
         {
-            if (PreventItem)
-            {
+            if (resetItem && txtItem.Items.Count > 0)
                 txtItem.SelectedIndex = 0;
-            }
 
             txtQuantity.Text = "0";
             txtPurchaseRate.Text = "0";
             txtNarration.Text = "";
             EditingOpeningStockID = 0;
             btnDelete.Visible = false;
-
         }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Are you sure  want to delete this Opening Stock record?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+           
+            // Ensure a record is selected
+            if (EditingOpeningStockID == 0)
             {
+                MessageBox.Show("No Opening Stock record selected to delete.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            // Confirm deletion
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to delete this Opening Stock record?",
+                "Delete Confirmation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
-            SqlParameter paraItemID = new SqlParameter("ItemID", (int)txtItem.SelectedValue);
-            string ConflictCheckCommandText = "Select CASE WHEN EXISTS (SELECT OpeningStockID from tblOpeningStock where ItemID = @ItemID) THEN 1 ELSE 0 END";
-            Commandscalar(ConflictCheckCommandText, paraItemID);
-            //int ConflictCount = Commands.ExecuteScalar(ConflictCheckCommandText, new SqlParameter("OpeningStockID", EditingOpeningStockID));
-            //if (EditingOpeningStockID == 0)
-            //{
-            //    MessageBox.Show("No Opening Stock record selected to delete.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-            //string DeleteCommandText = @"Delete from tblOpeningStock where OpeningStockID = @OpeningStockID";
-            int Result = Commands.ExecuteNonQuery(DeleteCommandText, new SqlParameter("OpeningStockID", EditingOpeningStockID));
+            if (confirm != DialogResult.Yes)
+                return;
 
-            if (Result > 0)
+            // Execute delete
+            SqlParameter param = new SqlParameter("OpeningStockID", EditingOpeningStockID);
+            int result = Commands.ExecuteNonQuery(DeleteCommandText, param);
+
+            if (result > 0)
             {
-                MessageBox.Show("Delete successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearForm();
+                MessageBox.Show("Opening Stock record deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearForm(true); // Reset form and hide delete button
             }
-                                                                                        
-
-
-
-            else               
+            else
             {
-                string errorMessage = "Error saving Opening Stock. Please try again.";
-
+                string errorMessage = "Error deleting Opening Stock record.";
                 if (Commands.CurrentException is Exception ex)
-                {
                     errorMessage += "\r\nDetails: " + ex.Message;
-                }
 
-                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             txtItem.Focus();
         }
+        //    if (EditingOpeningStockID == 0)
+        //    {
+        //        MessageBox.Show("No record selected to delete.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+
+        //    if (MessageBox.Show("Are you sure you want to delete this Opening Stock record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+        //        return;
+
+        //    int result = Commands.ExecuteNonQuery(DeleteCommandText, new SqlParameter("OpeningStockID", EditingOpeningStockID));
+
+        //    if (result > 0)
+        //    {
+        //        MessageBox.Show("Deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        ClearForm(true);
+        //    }
+        //    else
+        //    {
+        //        string errorMessage = "Error deleting Opening Stock.";
+        //        if (Commands.CurrentException is Exception ex)
+        //            errorMessage += "\r\nDetails: " + ex.Message;
+
+        //        MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+
+        //    txtItem.Focus();
+        //}
+
 
         private void Commandscalar(object conflictCheckCommand, object paraItemID)
         {
             throw new NotImplementedException();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error while exiting: " + ex.Message);
+            }
+
         }
     }
 }
