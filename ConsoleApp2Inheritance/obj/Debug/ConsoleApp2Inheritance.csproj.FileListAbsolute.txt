@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\ConsoleApp2Inheritance\obj\Debug\ConsoleApp2Inheritance.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleApp2Inheritance\obj\Debug\ConsoleApp2Inheritance.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleApp2Inheritance\bin\Debug\ConsoleApp2Inheritance.exe.config
+D:\Dotnet\source\repos\ConsoleApp2Inheritance\bin\Debug\ConsoleApp2Inheritance.exe
+D:\Dotnet\source\repos\ConsoleApp2Inheritance\bin\Debug\ConsoleApp2Inheritance.pdb
+D:\Dotnet\source\repos\ConsoleApp2Inheritance\obj\Debug\ConsoleApp2Inheritance.exe
+D:\Dotnet\source\repos\ConsoleApp2Inheritance\obj\Debug\ConsoleApp2Inheritance.pdb

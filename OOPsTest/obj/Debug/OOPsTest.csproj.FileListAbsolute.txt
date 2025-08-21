@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\OOPsTest\bin\Debug\OOPsTest.exe.config
+D:\Dotnet\source\repos\OOPsTest\bin\Debug\OOPsTest.exe
+D:\Dotnet\source\repos\OOPsTest\bin\Debug\OOPsTest.pdb
+D:\Dotnet\source\repos\OOPsTest\obj\Debug\OOPsTest.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\OOPsTest\obj\Debug\OOPsTest.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\OOPsTest\obj\Debug\OOPsTest.exe
+D:\Dotnet\source\repos\OOPsTest\obj\Debug\OOPsTest.pdb

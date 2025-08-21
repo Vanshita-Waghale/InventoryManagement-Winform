@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "AboutPage";
+}
+
+<h2>Student -AboutPage</h2>
+
+<br />
+@Session["UserName"]
+@ViewBag.UserName
+
+<hr />
+<ol>
+    <li>@ViewBag.Fruits[0]</li>
+    <li>@ViewBag.Fruits[1]</li>
+    <li>@ViewBag.Fruits[2]</li>
+</ol>
+
+<br />
+
+<ul>
+    @foreach (var fruit in ViewBag.Fruits)
+            {
+                <li>@fruit</li>
+            }
+</ul>
+

@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\ConsoleAppUserinfo\bin\Debug\ConsoleAppUserinfo.exe.config
+D:\Dotnet\source\repos\ConsoleAppUserinfo\bin\Debug\ConsoleAppUserinfo.exe
+D:\Dotnet\source\repos\ConsoleAppUserinfo\bin\Debug\ConsoleAppUserinfo.pdb
+D:\Dotnet\source\repos\ConsoleAppUserinfo\obj\Debug\ConsoleAppUserinfo.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleAppUserinfo\obj\Debug\ConsoleAppUserinfo.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleAppUserinfo\obj\Debug\ConsoleAppUserinfo.exe
+D:\Dotnet\source\repos\ConsoleAppUserinfo\obj\Debug\ConsoleAppUserinfo.pdb

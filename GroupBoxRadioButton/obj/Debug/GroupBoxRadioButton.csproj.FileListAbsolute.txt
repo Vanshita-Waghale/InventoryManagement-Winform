@@ -1,0 +1,10 @@
+D:\Dotnet\source\repos\GroupBoxRadioButton\bin\Debug\GroupBoxRadioButton.exe.config
+D:\Dotnet\source\repos\GroupBoxRadioButton\bin\Debug\GroupBoxRadioButton.exe
+D:\Dotnet\source\repos\GroupBoxRadioButton\bin\Debug\GroupBoxRadioButton.pdb
+D:\Dotnet\source\repos\GroupBoxRadioButton\obj\Debug\GroupBoxRadioButton.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\GroupBoxRadioButton\obj\Debug\GroupBoxRadioButton.Form1.resources
+D:\Dotnet\source\repos\GroupBoxRadioButton\obj\Debug\GroupBoxRadioButton.Properties.Resources.resources
+D:\Dotnet\source\repos\GroupBoxRadioButton\obj\Debug\GroupBoxRadioButton.csproj.GenerateResource.cache
+D:\Dotnet\source\repos\GroupBoxRadioButton\obj\Debug\GroupBoxRadioButton.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\GroupBoxRadioButton\obj\Debug\GroupBoxRadioButton.exe
+D:\Dotnet\source\repos\GroupBoxRadioButton\obj\Debug\GroupBoxRadioButton.pdb

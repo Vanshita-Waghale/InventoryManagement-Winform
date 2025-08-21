@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\ConsoleAppAbstract&Interface\obj\Debug\ConsoleAppAbstract&Interface.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleAppAbstract&Interface\obj\Debug\ConsoleAppAbstract&Interface.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleAppAbstract&Interface\bin\Debug\ConsoleAppAbstract&Interface.exe.config
+D:\Dotnet\source\repos\ConsoleAppAbstract&Interface\bin\Debug\ConsoleAppAbstract&Interface.exe
+D:\Dotnet\source\repos\ConsoleAppAbstract&Interface\bin\Debug\ConsoleAppAbstract&Interface.pdb
+D:\Dotnet\source\repos\ConsoleAppAbstract&Interface\obj\Debug\ConsoleAppAbstract&Interface.exe
+D:\Dotnet\source\repos\ConsoleAppAbstract&Interface\obj\Debug\ConsoleAppAbstract&Interface.pdb

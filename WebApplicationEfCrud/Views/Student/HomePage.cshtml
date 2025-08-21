@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "HomePage";
+}
+
+<h2>Student - HomePage</h2>
+
+<br />
+@Session["UserName"]
+
+<br />
+@TempData["Welcome"]
+<br />
+
+@ViewData["IndexPageMessage"]
+
+<br />
+
+@ViewData["IntegerMessageCdac"]
+<hr />
+
+<ol>
+    @foreach (var fruit in (List<string>)ViewData["Fruits"])
+    {
+        <li>@fruit</li>
+    }
+</ol>

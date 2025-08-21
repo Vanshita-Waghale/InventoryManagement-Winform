@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\ConsoleAppConstructorInheritance\bin\Debug\ConsoleAppConstructorInheritance.exe.config
+D:\Dotnet\source\repos\ConsoleAppConstructorInheritance\bin\Debug\ConsoleAppConstructorInheritance.exe
+D:\Dotnet\source\repos\ConsoleAppConstructorInheritance\bin\Debug\ConsoleAppConstructorInheritance.pdb
+D:\Dotnet\source\repos\ConsoleAppConstructorInheritance\obj\Debug\ConsoleAppConstructorInheritance.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleAppConstructorInheritance\obj\Debug\ConsoleAppConstructorInheritance.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleAppConstructorInheritance\obj\Debug\ConsoleAppConstructorInheritance.exe
+D:\Dotnet\source\repos\ConsoleAppConstructorInheritance\obj\Debug\ConsoleAppConstructorInheritance.pdb

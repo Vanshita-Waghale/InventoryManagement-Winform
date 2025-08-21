@@ -1,0 +1,10 @@
+D:\Dotnet\source\repos\WinFormArguments\bin\Debug\WinFormArguments.exe.config
+D:\Dotnet\source\repos\WinFormArguments\bin\Debug\WinFormArguments.exe
+D:\Dotnet\source\repos\WinFormArguments\bin\Debug\WinFormArguments.pdb
+D:\Dotnet\source\repos\WinFormArguments\obj\Debug\WinFormArguments.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\WinFormArguments\obj\Debug\WinFormArguments.Form1.resources
+D:\Dotnet\source\repos\WinFormArguments\obj\Debug\WinFormArguments.Properties.Resources.resources
+D:\Dotnet\source\repos\WinFormArguments\obj\Debug\WinFormArguments.csproj.GenerateResource.cache
+D:\Dotnet\source\repos\WinFormArguments\obj\Debug\WinFormArguments.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\WinFormArguments\obj\Debug\WinFormArguments.exe
+D:\Dotnet\source\repos\WinFormArguments\obj\Debug\WinFormArguments.pdb

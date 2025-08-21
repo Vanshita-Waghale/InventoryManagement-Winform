@@ -1,0 +1,19 @@
+﻿
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<h2>Contact</h2>
+<br /> @Session["UserName"]
+
+<p>
+    This is the contact page.
+</p>
+
+<p>
+    <a href="@Url.Action("Welcome", "Home")">Welcome</a> |
+    <a href="@Url.Action("About", "Home")">About</a> |
+    <a href="@Url.Action("Contact", "Home")">Contact</a> |
+    <a href="@Url.Action("Logout", "Home")">Logout</a>
+</p>

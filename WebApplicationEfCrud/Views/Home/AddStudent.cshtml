@@ -1,0 +1,27 @@
+﻿@model WebApplicationEfCrud.Models.StudentViewModel
+
+@{
+    ViewBag.Title = "AddStudent";
+}
+
+<h2>AddStudent</h2>
+
+
+@using (Html.BeginForm("SaveStudent", "Home"))
+{
+    <span>Id: </span>
+    @Html.TextBoxFor(m => m.id)
+    <br />
+    <span>Name: </span>
+    @Html.TextBoxFor(m => m.Name)
+
+    <br />
+    <span>Age: </span>
+    @Html.TextBoxFor(m => m.Age)
+    <br />
+    <span>City: </span>
+    @Html.TextBoxFor(m => m.City)
+    <br />
+    <button type="submit" value="Save">Save</button>
+
+}

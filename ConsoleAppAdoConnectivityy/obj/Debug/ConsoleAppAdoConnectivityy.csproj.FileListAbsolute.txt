@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\ConsoleAppAdoConnectivityy\obj\Debug\ConsoleAppAdoConnectivityy.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleAppAdoConnectivityy\obj\Debug\ConsoleAppAdoConnectivityy.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleAppAdoConnectivityy\bin\Debug\ConsoleAppAdoConnectivityy.exe.config
+D:\Dotnet\source\repos\ConsoleAppAdoConnectivityy\bin\Debug\ConsoleAppAdoConnectivityy.exe
+D:\Dotnet\source\repos\ConsoleAppAdoConnectivityy\bin\Debug\ConsoleAppAdoConnectivityy.pdb
+D:\Dotnet\source\repos\ConsoleAppAdoConnectivityy\obj\Debug\ConsoleAppAdoConnectivityy.exe
+D:\Dotnet\source\repos\ConsoleAppAdoConnectivityy\obj\Debug\ConsoleAppAdoConnectivityy.pdb

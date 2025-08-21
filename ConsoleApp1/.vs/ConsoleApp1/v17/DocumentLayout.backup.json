@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Dotnet\\source\\repos\\ConsoleApp1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{02875348-43E6-4FE3-B89B-8C72BA55728D}|ConsoleApp1.csproj|d:\\dotnet\\source\\repos\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02875348-43E6-4FE3-B89B-8C72BA55728D}|ConsoleApp1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02875348-43E6-4FE3-B89B-8C72BA55728D}|ConsoleApp1.csproj|D:\\Dotnet\\source\\repos\\ConsoleApp1\\calculation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02875348-43E6-4FE3-B89B-8C72BA55728D}|ConsoleApp1.csproj|solutionrelative:calculation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Dotnet\\source\\repos\\ConsoleApp1\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Dotnet\\source\\repos\\ConsoleApp1\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBYAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T13:02:47.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Calculation.cs",
+              "DocumentMoniker": "D:\\Dotnet\\source\\repos\\ConsoleApp1\\Calculation.cs",
+              "RelativeDocumentMoniker": "Calculation.cs",
+              "ToolTip": "D:\\Dotnet\\source\\repos\\ConsoleApp1\\Calculation.cs",
+              "RelativeToolTip": "Calculation.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T13:07:32.733Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

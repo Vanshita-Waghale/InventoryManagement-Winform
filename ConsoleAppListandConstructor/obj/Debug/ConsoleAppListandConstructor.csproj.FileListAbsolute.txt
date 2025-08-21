@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\ConsoleAppListandConstructor\obj\Debug\ConsoleAppListandConstructor.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleAppListandConstructor\obj\Debug\ConsoleAppListandConstructor.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleAppListandConstructor\bin\Debug\ConsoleAppListandConstructor.exe.config
+D:\Dotnet\source\repos\ConsoleAppListandConstructor\bin\Debug\ConsoleAppListandConstructor.exe
+D:\Dotnet\source\repos\ConsoleAppListandConstructor\bin\Debug\ConsoleAppListandConstructor.pdb
+D:\Dotnet\source\repos\ConsoleAppListandConstructor\obj\Debug\ConsoleAppListandConstructor.exe
+D:\Dotnet\source\repos\ConsoleAppListandConstructor\obj\Debug\ConsoleAppListandConstructor.pdb

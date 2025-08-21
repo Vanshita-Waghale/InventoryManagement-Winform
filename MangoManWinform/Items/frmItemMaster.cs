@@ -127,8 +127,8 @@ namespace MangoManWinform.Items
             if (PrimaryKeyValue == null)
             {
                 CommandText = @"
-    INSERT INTO tblItem (ItemID, HSN, ItemName, UnitName, Description, PurchaseRate, SaleRate, rcdt)
-    VALUES (@ItemID, @HSN, @ItemName, @UnitName, @Descr, @PurchaseRate, @SaleRate, GETDATE())";
+        INSERT INTO tblItem (HSN, ItemName, UnitName, Description, PurchaseRate, SaleRate, rcdt)
+        VALUES (@HSN, @ItemName, @UnitName, @Descr, @PurchaseRate, @SaleRate, GETDATE())";
 
 
             }
@@ -177,39 +177,27 @@ namespace MangoManWinform.Items
         private void txtHSN_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtHSN.Text))
-            {
                 errorProvider1.SetError(txtHSN, "Please enter HSN.");
-            }
             else
-            {
                 errorProvider1.SetError(txtHSN, null);
-            }
 
         }
         private void txtUnitName_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUnitName.Text))
-            {
-                errorProvider1.SetError(txtUnitName, "Please enter HSN.");
-            }
+            if (string.IsNullOrWhiteSpace(txtItemName.Text))
+                errorProvider1.SetError(txtItemName, "Please enter Item Name.");
             else
-            {
-                errorProvider1.SetError(txtUnitName, null);
-            }
+                errorProvider1.SetError(txtItemName, null);
         }
         //to replace any name first select thet word the click ctrl f and then select the selection and replce the name you want it would replace name.
         private void txtItemName_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtItemName.Text))
-            {
-                errorProvider1.SetError(txtItemName, "Please enter HSN.");
-            }
-            else
-            {
-                errorProvider1.SetError(txtItemName, null);
-            }
-
+            if (string.IsNullOrWhiteSpace(txtUnitName.Text))
+        errorProvider1.SetError(txtUnitName, "Please enter Unit Name.");
+    else
+        errorProvider1.SetError(txtUnitName, null);
         }
+
 
         private void txtPurchaseRate_Validating(object sender, CancelEventArgs e)
         {
@@ -239,63 +227,73 @@ namespace MangoManWinform.Items
 
         void LoadItems()
         {
-            dataGridView1.DataSource = cmd.GetData("SELECT * FROM tblItem ORDER BY ItemName");     
-            dataGridView1.Columns["ItemID"].Visible = false; // Hide ItemID column
-               
+            // Load data into DataGridView
+            dataGridView1.DataSource = cmd.GetData("SELECT * FROM tblItem ORDER BY ItemName");
+
+            // Safely hide ItemID column if it exists
+            if (dataGridView1.Columns["ItemID"] != null)
+            {
+                dataGridView1.Columns["ItemID"].Visible = false;
+            }
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int ItemId = (int)dataGridView1.Rows[e.RowIndex].Cells["ItemID"].Value;
-           
-                DataTable dt = (DataTable)cmd.GetData($"SELECT * FROM tblItem WHERE ItemID = {ItemId.ToString()}");
+            // Validate row index
+            if (e.RowIndex < 0 || e.RowIndex >= dataGridView1.Rows.Count)
+            {
+                MessageBox.Show("Invalid row selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                
-                if (dt.Rows.Count == 0)
-                {
-                    MessageBox.Show("No record found.May be some other user deleted the selected record. Please refresh", "Item",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                DataRow dr = dt.Rows[0];
-                PrimaryKeyValue = (int)dr["ItemID"];
-                txtHSN.Text = dt.Rows[0]["HSN"].ToString();
-                txtItemName.Text = dt.Rows[0]["ItemName"].ToString();
-                txtUnitName.Text = dt.Rows[0]["UnitName"].ToString();
-                txtDescr.Text = dt.Rows[0]["Description"].ToString();
-                txtPurchaseRate.Text = dt.Rows[0]["PurchaseRate"].ToString();
-                txtSaleRate.Text = dt.Rows[0]["SaleRate"].ToString();
-                btnDelete.Visible = true;
+            // Safely retrieve ItemID
+            object cellValue = dataGridView1.Rows[e.RowIndex].Cells["ItemID"]?.Value;
+            if (cellValue == null || !int.TryParse(cellValue.ToString(), out int ItemId))
+            {
+                MessageBox.Show("ItemID not found or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            // Fetch item details
+            DataTable dt = cmd.GetData($"SELECT * FROM tblItem WHERE ItemID = {ItemId}");
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("No record found. It may have been deleted by another user. Please refresh.", "Item",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Populate form fields
+            DataRow dr = dt.Rows[0];
+            PrimaryKeyValue = Convert.ToInt32(dr["ItemID"]);
+            txtHSN.Text = dr["HSN"].ToString();
+            txtItemName.Text = dr["ItemName"].ToString();
+            txtUnitName.Text = dr["UnitName"].ToString();
+            txtDescr.Text = dr["Description"].ToString();
+            txtPurchaseRate.Text = dr["PurchaseRate"].ToString();
+            txtSaleRate.Text = dr["SaleRate"].ToString();
+            btnDelete.Visible = true;
         }
-            
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //var Result = MessageBox.Show("Are you sure you want to delete this record?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-            //    MessageBoxDefaultButton.Button2); //this or the below line will work same.
-            //if (Result != DialogResult.Yes)
-            //{
-            //    return;
-            //}
-            if(MessageBox.Show("Are you sure you want to delete this record?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-               MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+            // Confirm deletion
+            if (MessageBox.Show("Are you sure you want to delete this record?", "Delete Confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
             {
                 return;
             }
-            int result =cmd.ExecuteNonQuery($@"Delete from tblItem Where ItemID = @ItemID",
+
+            // Execute delete query
+            int result = cmd.ExecuteNonQuery(@"DELETE FROM tblItem WHERE ItemID = @ItemID",
                 new SqlParameter("ItemID", PrimaryKeyValue));
-            
+
             if (result > 0)
             {
-                MessageBox.Show("Record deleted", "Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Record deleted successfully.", "Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
                 LoadItems();
             }
-
-            //            //  Always close the connection
-
-
         }
 
         private void txtDescr_TextChanged(object sender, EventArgs e)

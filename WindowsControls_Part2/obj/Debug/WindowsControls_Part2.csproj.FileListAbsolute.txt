@@ -1,0 +1,10 @@
+D:\Dotnet\source\repos\WindowsControls_Part2\bin\Debug\WindowsControls_Part2.exe.config
+D:\Dotnet\source\repos\WindowsControls_Part2\bin\Debug\WindowsControls_Part2.exe
+D:\Dotnet\source\repos\WindowsControls_Part2\bin\Debug\WindowsControls_Part2.pdb
+D:\Dotnet\source\repos\WindowsControls_Part2\obj\Debug\WindowsControls_Part2.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\WindowsControls_Part2\obj\Debug\WindowsControls_Part2.Form1.resources
+D:\Dotnet\source\repos\WindowsControls_Part2\obj\Debug\WindowsControls_Part2.Properties.Resources.resources
+D:\Dotnet\source\repos\WindowsControls_Part2\obj\Debug\WindowsControls_Part2.csproj.GenerateResource.cache
+D:\Dotnet\source\repos\WindowsControls_Part2\obj\Debug\WindowsControls_Part2.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\WindowsControls_Part2\obj\Debug\WindowsControls_Part2.exe
+D:\Dotnet\source\repos\WindowsControls_Part2\obj\Debug\WindowsControls_Part2.pdb

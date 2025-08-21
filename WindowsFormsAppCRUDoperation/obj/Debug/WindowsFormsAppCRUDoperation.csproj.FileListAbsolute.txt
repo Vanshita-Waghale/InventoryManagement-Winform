@@ -1,0 +1,10 @@
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\obj\Debug\WindowsFormsAppCRUDoperation.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\obj\Debug\WindowsFormsAppCRUDoperation.Form1.resources
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\obj\Debug\WindowsFormsAppCRUDoperation.Properties.Resources.resources
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\obj\Debug\WindowsFormsAppCRUDoperation.csproj.GenerateResource.cache
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\obj\Debug\WindowsFormsAppCRUDoperation.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\bin\Debug\WindowsFormsAppCRUDoperation.exe.config
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\bin\Debug\WindowsFormsAppCRUDoperation.exe
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\bin\Debug\WindowsFormsAppCRUDoperation.pdb
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\obj\Debug\WindowsFormsAppCRUDoperation.exe
+D:\Dotnet\source\repos\WindowsFormsAppCRUDoperation\obj\Debug\WindowsFormsAppCRUDoperation.pdb

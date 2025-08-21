@@ -1,0 +1,10 @@
+D:\Dotnet\source\repos\frmGenericCollection\obj\Debug\frmGenericCollection.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\frmGenericCollection\obj\Debug\frmGenericCollection.Form1.resources
+D:\Dotnet\source\repos\frmGenericCollection\obj\Debug\frmGenericCollection.Properties.Resources.resources
+D:\Dotnet\source\repos\frmGenericCollection\obj\Debug\frmGenericCollection.csproj.GenerateResource.cache
+D:\Dotnet\source\repos\frmGenericCollection\obj\Debug\frmGenericCollection.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\frmGenericCollection\bin\Debug\frmGenericCollection.exe.config
+D:\Dotnet\source\repos\frmGenericCollection\bin\Debug\frmGenericCollection.exe
+D:\Dotnet\source\repos\frmGenericCollection\bin\Debug\frmGenericCollection.pdb
+D:\Dotnet\source\repos\frmGenericCollection\obj\Debug\frmGenericCollection.exe
+D:\Dotnet\source\repos\frmGenericCollection\obj\Debug\frmGenericCollection.pdb

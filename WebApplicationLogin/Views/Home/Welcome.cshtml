@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Welcome";
+}
+
+<h2>Welcome</h2>
+<br /> @Session["UserName"]
+<br /> @TempData["Welcome"]
+
+<hr />
+
+<p>
+    This is the Welcome page.
+</p>
+
+<p>
+    <a href="@Url.Action("Welcome", "Home")">Welcome</a> |
+    <a href="@Url.Action("About", "Home")">About</a> |
+    <a href="@Url.Action("Contact", "Home")">Contact</a> |
+    <a href="@Url.Action("Logout", "Home")">Logout</a>
+</p>
+
+

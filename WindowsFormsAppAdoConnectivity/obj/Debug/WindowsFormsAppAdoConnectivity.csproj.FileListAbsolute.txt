@@ -1,0 +1,10 @@
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\bin\Debug\WindowsFormsAppAdoConnectivity.exe.config
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\bin\Debug\WindowsFormsAppAdoConnectivity.exe
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\bin\Debug\WindowsFormsAppAdoConnectivity.pdb
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\obj\Debug\WindowsFormsAppAdoConnectivity.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\obj\Debug\WindowsFormsAppAdoConnectivity.Form1.resources
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\obj\Debug\WindowsFormsAppAdoConnectivity.Properties.Resources.resources
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\obj\Debug\WindowsFormsAppAdoConnectivity.csproj.GenerateResource.cache
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\obj\Debug\WindowsFormsAppAdoConnectivity.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\obj\Debug\WindowsFormsAppAdoConnectivity.exe
+D:\Dotnet\source\repos\WindowsFormsAppAdoConnectivity\obj\Debug\WindowsFormsAppAdoConnectivity.pdb

@@ -1,0 +1,9 @@
+D:\Dotnet\source\repos\ConsoleAppLibraryUsage\bin\Debug\ConsoleAppLibraryUsage.exe.config
+D:\Dotnet\source\repos\ConsoleAppLibraryUsage\bin\Debug\ConsoleAppLibraryUsage.exe
+D:\Dotnet\source\repos\ConsoleAppLibraryUsage\bin\Debug\ConsoleAppLibraryUsage.pdb
+D:\Dotnet\source\repos\ConsoleAppLibraryUsage\bin\Debug\ClassLibraryMathCalculation.dll
+D:\Dotnet\source\repos\ConsoleAppLibraryUsage\obj\Debug\ConsoleAppLibraryUsage.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleAppLibraryUsage\obj\Debug\ConsoleAppLibraryUsage.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleAppLibraryUsage\obj\Debug\ConsoleA.FB5D8082.Up2Date
+D:\Dotnet\source\repos\ConsoleAppLibraryUsage\obj\Debug\ConsoleAppLibraryUsage.exe
+D:\Dotnet\source\repos\ConsoleAppLibraryUsage\obj\Debug\ConsoleAppLibraryUsage.pdb

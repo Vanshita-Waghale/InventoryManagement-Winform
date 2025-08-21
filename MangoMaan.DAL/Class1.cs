@@ -64,27 +64,24 @@ namespace MangoMaan.DAL
 
             return NofRecords;
         }
-        
-                        
-        public int ExecuteScalar(string CommandText, params SqlParameter[] SQLParameters)
+
+
+        public object ExecuteScalar(string CommandText, params SqlParameter[] SQLParameters)
         {
             CurrentException = null;
-            int NofRecords = 0;
+            object result = null;
 
             try
             {
                 if (Connection.State != ConnectionState.Open)
-                {
                     Connection.Open();
-                }
-                SqlCommand cmd = new SqlCommand(CommandText, Connection);
+
+                using (SqlCommand cmd = new SqlCommand(CommandText, Connection))
                 {
-                    if(SQLParameters.Count()>0)
-                    {
-                    cmd.Parameters.AddRange(SQLParameters);
-                    }
-                    
-            return (int)cmd.ExecuteScalar();
+                    if (SQLParameters != null && SQLParameters.Length > 0)
+                        cmd.Parameters.AddRange(SQLParameters);
+
+                    result = cmd.ExecuteScalar(); // ✅ Return as object
                 }
             }
             catch (SqlException ex)
@@ -96,9 +93,8 @@ namespace MangoMaan.DAL
                 Connection.Close();
             }
 
-            return 0;
+            return result; // ✅ Let caller handle conversion
         }
-
         // ----------------------
         //  GetData (no parameters)
         // ----------------------

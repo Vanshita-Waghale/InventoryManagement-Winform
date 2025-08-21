@@ -1,0 +1,6 @@
+D:\Dotnet\source\repos\ClassLibraryMathCalculation\bin\Debug\ClassLibraryMathCalculation.dll
+D:\Dotnet\source\repos\ClassLibraryMathCalculation\bin\Debug\ClassLibraryMathCalculation.pdb
+D:\Dotnet\source\repos\ClassLibraryMathCalculation\obj\Debug\ClassLibraryMathCalculation.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ClassLibraryMathCalculation\obj\Debug\ClassLibraryMathCalculation.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ClassLibraryMathCalculation\obj\Debug\ClassLibraryMathCalculation.dll
+D:\Dotnet\source\repos\ClassLibraryMathCalculation\obj\Debug\ClassLibraryMathCalculation.pdb

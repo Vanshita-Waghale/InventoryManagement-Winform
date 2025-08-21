@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\ConsoleAppConstructorChaining\obj\Debug\ConsoleAppConstructorChaining.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleAppConstructorChaining\obj\Debug\ConsoleAppConstructorChaining.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleAppConstructorChaining\bin\Debug\ConsoleAppConstructorChaining.exe.config
+D:\Dotnet\source\repos\ConsoleAppConstructorChaining\bin\Debug\ConsoleAppConstructorChaining.exe
+D:\Dotnet\source\repos\ConsoleAppConstructorChaining\bin\Debug\ConsoleAppConstructorChaining.pdb
+D:\Dotnet\source\repos\ConsoleAppConstructorChaining\obj\Debug\ConsoleAppConstructorChaining.exe
+D:\Dotnet\source\repos\ConsoleAppConstructorChaining\obj\Debug\ConsoleAppConstructorChaining.pdb

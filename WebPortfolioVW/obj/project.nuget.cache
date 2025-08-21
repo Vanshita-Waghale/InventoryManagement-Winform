@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ztlznm4vXJE=",
+  "success": true,
+  "projectFilePath": "D:\\Dotnet\\source\\repos\\WebPortfolioVW\\WebPortfolioVW.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wagha\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.0\\microsoft.aspnetcore.openapi.9.0.0.nupkg.sha512",
+    "C:\\Users\\wagha\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,28 @@
+﻿
+
+@model WebApplicationMvcPrroject.Models.StudentViewModel 
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Student-Index</h2>
+<h3>@Model.Name</h3>
+<h3>@Model.City</h3>
+
+<h2> Fruits List </h2>
+<ol>
+    @foreach (string item in Model.FruitsList)
+    {
+        <li>@item</li>
+    }
+</ol>
+
+<h2> Student List </h2>
+<ul>
+    @foreach (var item in Model.StudentList)
+    {
+        <li> @item.Name -@item.City -@item.FirstName -@item.Department </li> 
+    }
+</ul>

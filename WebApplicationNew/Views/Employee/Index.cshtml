@@ -1,0 +1,20 @@
+﻿@model WebApplicationNew.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employee Index</h2>
+<h3>@Model.id</h3>
+<h3>@Model.FirstName</h3>
+<h3>@Model.Department</h3>
+
+
+<h2> Employee List </h2>
+<ul>
+    @foreach (var item in Model.EmployeeList)
+    {
+        <li>@item.id -  @item.FirstName - @item.Department</li>
+    }
+</ul>
+

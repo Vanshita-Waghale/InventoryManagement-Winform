@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\CalciIfElse\bin\Debug\CalciIfElse.exe.config
+D:\Dotnet\source\repos\CalciIfElse\bin\Debug\CalciIfElse.exe
+D:\Dotnet\source\repos\CalciIfElse\bin\Debug\CalciIfElse.pdb
+D:\Dotnet\source\repos\CalciIfElse\obj\Debug\CalciIfElse.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\CalciIfElse\obj\Debug\CalciIfElse.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\CalciIfElse\obj\Debug\CalciIfElse.exe
+D:\Dotnet\source\repos\CalciIfElse\obj\Debug\CalciIfElse.pdb

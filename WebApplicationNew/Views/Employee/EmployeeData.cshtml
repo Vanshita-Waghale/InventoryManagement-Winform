@@ -1,0 +1,29 @@
+﻿@model WebApplicationNew.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "EmployeeData";
+}
+
+<h2>EmployeeData from database</h2>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Department</th>
+        <th></th>
+       
+       
+    </tr>
+
+    @foreach (var item in Model.EmployeeList)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.FirstName</td>
+            <td>@item.Department</td>
+            <td><a href="/Employee/DeleteWorker?id=@item.id">Delete</a></td>
+            <td><a href="/Employee/AddEmployee?id=@item.id">Edit</a></td>
+        </tr>
+    }
+</table>

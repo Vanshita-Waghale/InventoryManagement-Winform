@@ -1,0 +1,19 @@
+﻿
+@model WebApplicationMvcProject.Models.EmployeeViewModel
+
+@{
+    ViewBag.Title = "AddEmployee";
+}
+
+<h2>Add Employee</h2>
+
+@using (Html.BeginForm("SaveWorker", "Employee"))
+{
+    <span>First Name: </span>
+    @Html.TextBoxFor(m => m.FirstName)
+    <br />
+    <span>Department: </span>
+    @Html.TextBoxFor(m => m.Department)
+    <br />
+    <button type="submit" value="Save">Save</button>
+}

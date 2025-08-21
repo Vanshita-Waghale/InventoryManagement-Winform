@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\ConsoleApp-DAY1\bin\Debug\ConsoleApp-DAY1.exe.config
+D:\Dotnet\source\repos\ConsoleApp-DAY1\bin\Debug\ConsoleApp-DAY1.exe
+D:\Dotnet\source\repos\ConsoleApp-DAY1\bin\Debug\ConsoleApp-DAY1.pdb
+D:\Dotnet\source\repos\ConsoleApp-DAY1\obj\Debug\ConsoleApp-DAY1.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleApp-DAY1\obj\Debug\ConsoleApp-DAY1.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleApp-DAY1\obj\Debug\ConsoleApp-DAY1.exe
+D:\Dotnet\source\repos\ConsoleApp-DAY1\obj\Debug\ConsoleApp-DAY1.pdb

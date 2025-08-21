@@ -1,0 +1,7 @@
+D:\Dotnet\source\repos\CalciSwitchCase\obj\Debug\CalciSwitchCase.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\CalciSwitchCase\obj\Debug\CalciSwitchCase.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\CalciSwitchCase\bin\Debug\CalciSwitchCase.exe.config
+D:\Dotnet\source\repos\CalciSwitchCase\bin\Debug\CalciSwitchCase.exe
+D:\Dotnet\source\repos\CalciSwitchCase\bin\Debug\CalciSwitchCase.pdb
+D:\Dotnet\source\repos\CalciSwitchCase\obj\Debug\CalciSwitchCase.exe
+D:\Dotnet\source\repos\CalciSwitchCase\obj\Debug\CalciSwitchCase.pdb

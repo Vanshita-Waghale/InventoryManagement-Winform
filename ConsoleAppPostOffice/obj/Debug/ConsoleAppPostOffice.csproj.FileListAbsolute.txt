@@ -1,0 +1,10 @@
+D:\Dotnet\source\repos\ConsoleAppPostOffice\bin\Debug\ConsoleAppPostOffice.exe.config
+D:\Dotnet\source\repos\ConsoleAppPostOffice\bin\Debug\ConsoleAppPostOffice.exe
+D:\Dotnet\source\repos\ConsoleAppPostOffice\bin\Debug\ConsoleAppPostOffice.pdb
+D:\Dotnet\source\repos\ConsoleAppPostOffice\bin\Debug\Newtonsoft.Json.dll
+D:\Dotnet\source\repos\ConsoleAppPostOffice\bin\Debug\Newtonsoft.Json.xml
+D:\Dotnet\source\repos\ConsoleAppPostOffice\obj\Debug\ConsoleAppPostOffice.csproj.AssemblyReference.cache
+D:\Dotnet\source\repos\ConsoleAppPostOffice\obj\Debug\ConsoleAppPostOffice.csproj.CoreCompileInputs.cache
+D:\Dotnet\source\repos\ConsoleAppPostOffice\obj\Debug\ConsoleA.DFCDF781.Up2Date
+D:\Dotnet\source\repos\ConsoleAppPostOffice\obj\Debug\ConsoleAppPostOffice.exe
+D:\Dotnet\source\repos\ConsoleAppPostOffice\obj\Debug\ConsoleAppPostOffice.pdb

@@ -1,0 +1,31 @@
+﻿@model WebApplicationEfCrud.Models.StudentViewModel
+@{
+    ViewBag.Title = "StudentData";
+}
+
+<h2>StudentData</h2>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Age</th>
+        <th></th>
+
+
+    </tr>
+
+    @foreach (var item in Model.StudentList)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.Name</td>
+            <td>@item.City</td>
+            <td>@item.Age</td>
+            <td><a href="/Home/StudentData?id=@item.id">Delete</a></td>
+            <td><a href="/Home/StudentData?id=@item.id">Edit</a></td>
+        </tr>
+    }
+</table>
+
