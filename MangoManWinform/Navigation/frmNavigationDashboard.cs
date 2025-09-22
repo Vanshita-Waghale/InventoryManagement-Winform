@@ -35,5 +35,20 @@ namespace MangoManWinform.Navigation
             frm.MdiParent = this;//Multiple document interface
             frm.Show();
         }
+
+        private void btnPurchase_Click(object sender, EventArgs e)
+        {
+            Transactions.frmPurchase frm = new Transactions.frmPurchase();
+            frm.MdiParent = this; // Set MDI parent
+            frm.Show();
+        }
+
+        private void btnSale_Click(object sender, EventArgs e)
+        {
+            Transactions.frmSale frm = new Transactions.frmSale();
+            frm.MdiParent = this; // Set MDI parent
+            frm.Show();
+        }
     }
 }
+

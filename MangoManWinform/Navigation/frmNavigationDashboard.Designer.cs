@@ -80,6 +80,7 @@
             this.btnSale.Name = "btnSale";
             this.btnSale.Size = new System.Drawing.Size(57, 59);
             this.btnSale.Text = "&Sale";
+            this.btnSale.Click += new System.EventHandler(this.btnSale_Click);
             // 
             // btnPurchase
             // 
@@ -87,6 +88,7 @@
             this.btnPurchase.Name = "btnPurchase";
             this.btnPurchase.Size = new System.Drawing.Size(87, 59);
             this.btnPurchase.Text = "&Purchase";
+            this.btnPurchase.Click += new System.EventHandler(this.btnPurchase_Click);
             // 
             // toolStrip2
             // 

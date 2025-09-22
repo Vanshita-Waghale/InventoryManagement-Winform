@@ -61,11 +61,40 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Data\SqlCLient.cs" />
+    <Compile Include="Template\frmBaseTemp.cs" />
+    <Compile Include="Template\frmBaseTemp.Designer.cs">
+      <DependentUpon>frmBaseTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\frmBaseTemplate.cs" />
+    <Compile Include="Transactions\FrmPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\FrmPurchase.Designer.cs">
+      <DependentUpon>FrmPurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transactions\FrmOpeningStock.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Transactions\FrmOpeningStock.Designer.cs">
       <DependentUpon>FrmOpeningStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\frmPurchaseSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\frmPurchaseSearch.Designer.cs">
+      <DependentUpon>frmPurchaseSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\frmSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\frmSale.Designer.cs">
+      <DependentUpon>frmSale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\frmSaleSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\frmSaleSearch.Designer.cs">
+      <DependentUpon>frmSaleSearch.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Items\frmItemMaster.resx">
       <DependentUpon>frmItemMaster.cs</DependentUpon>
@@ -82,8 +111,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Template\frmBaseTemp.resx">
+      <DependentUpon>frmBaseTemp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Transactions\FrmOpeningStock.resx">
       <DependentUpon>FrmOpeningStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\FrmPurchase.resx">
+      <DependentUpon>FrmPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\frmPurchaseSearch.resx">
+      <DependentUpon>frmPurchaseSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\frmSale.resx">
+      <DependentUpon>frmSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\frmSaleSearch.resx">
+      <DependentUpon>frmSaleSearch.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -103,6 +147,9 @@
       <Project>{64e2de3f-3301-421f-98c8-5fad88f6f037}</Project>
       <Name>MangoMaan.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

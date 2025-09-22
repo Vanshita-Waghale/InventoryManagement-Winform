@@ -305,6 +305,50 @@ namespace MangoManWinform.Items
         {
 
         }
+            
+
+        private void btnSearch_Click_1(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // If nothing entered, load all items
+                LoadItems();
+            }
+            else
+            {
+                // Search by ItemName, HSN, or UnitName
+                string query = @"
+            SELECT * 
+            FROM tblItem
+            WHERE ItemName LIKE @Search
+               OR HSN LIKE @Search
+               OR UnitName LIKE @Search
+            ORDER BY ItemName";
+
+                dataGridView1.DataSource = cmd.GetData(query,
+                    new SqlParameter("Search", "%" + searchText + "%"));
+
+                // Hide ItemID column
+                if (dataGridView1.Columns["ItemID"] != null)
+                {
+                    dataGridView1.Columns["ItemID"].Visible = false;
+                }
+            }
+        
+
     }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            // Clear the search text
+            txtSearch.Text = "";
+
+            // Reload all records
+            LoadItems();
+        }
+    }
+    
 }
 

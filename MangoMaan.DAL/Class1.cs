@@ -50,6 +50,7 @@ namespace MangoMaan.DAL
                         cmd.Parameters.AddRange(SQLParameters);
 
                     NofRecords = cmd.ExecuteNonQuery();
+                    
                 }
             }
             catch (SqlException ex)

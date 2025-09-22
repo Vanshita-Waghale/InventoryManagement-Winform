@@ -72,6 +72,7 @@
             this.label2.Size = new System.Drawing.Size(49, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Item";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtItem
             // 
@@ -98,6 +99,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(19, 82);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
@@ -186,7 +188,7 @@
             this.groupBox2.Controls.Add(this.btnDelete);
             this.groupBox2.Controls.Add(this.btnExit);
             this.groupBox2.Controls.Add(this.btnSave);
-            this.groupBox2.Location = new System.Drawing.Point(21, 447);
+            this.groupBox2.Location = new System.Drawing.Point(21, 445);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(753, 80);
             this.groupBox2.TabIndex = 10;

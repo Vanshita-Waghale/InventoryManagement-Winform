@@ -41,8 +41,7 @@ namespace MangoManWinform.Transactions
 
         private void FrmOpeningStock_Load(object sender, EventArgs e)
         {
-            e.Cancel = true; // This will prevent the form from closing
-
+           
 
         }
 
@@ -293,34 +292,6 @@ namespace MangoManWinform.Transactions
 
             txtItem.Focus();
         }
-        //    if (EditingOpeningStockID == 0)
-        //    {
-        //        MessageBox.Show("No record selected to delete.", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-        //    if (MessageBox.Show("Are you sure you want to delete this Opening Stock record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-        //        return;
-
-        //    int result = Commands.ExecuteNonQuery(DeleteCommandText, new SqlParameter("OpeningStockID", EditingOpeningStockID));
-
-        //    if (result > 0)
-        //    {
-        //        MessageBox.Show("Deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        ClearForm(true);
-        //    }
-        //    else
-        //    {
-        //        string errorMessage = "Error deleting Opening Stock.";
-        //        if (Commands.CurrentException is Exception ex)
-        //            errorMessage += "\r\nDetails: " + ex.Message;
-
-        //        MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-
-        //    txtItem.Focus();
-        //}
-
 
         private void Commandscalar(object conflictCheckCommand, object paraItemID)
         {
@@ -337,6 +308,11 @@ namespace MangoManWinform.Transactions
             {
                 MessageBox.Show("Error while exiting: " + ex.Message);
             }
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
     }
