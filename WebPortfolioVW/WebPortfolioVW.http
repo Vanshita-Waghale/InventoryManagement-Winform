@@ -1,6 +1,0 @@
-@WebPortfolioVW_HostAddress = http://localhost:5101
-
-GET {{WebPortfolioVW_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
