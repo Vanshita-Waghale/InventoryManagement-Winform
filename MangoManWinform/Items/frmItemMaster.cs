@@ -14,166 +14,118 @@ using System.Linq.Expressions;
 
 namespace MangoManWinform.Items
 {
+    
     public partial class frmItemMaster : Form
     {
-
-        int? PrimaryKeyValue;
         MangoMaan.DAL.CommonCommands cmd;
-        private int result;
-
-        public object ErrorControl { get; private set; }
-        public object Conn { get; private set; }
-
         public frmItemMaster()
         {
             InitializeComponent();
             cmd = new MangoMaan.DAL.CommonCommands();
             LoadItems();
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-        // to login in sql server we have username and password 
-        // windows authentication - connection string for sql server (use trusted connection from google)
-
-
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.Validate(false);
-            this.ValidateChildren(ValidationConstraints.None);
-            string Errors = null;
-            string ErrorText = null;
-            Control ErrorControl = null;
-
-            ErrorText = errorProvider1.GetError(txtHSN);
-            if (!string.IsNullOrWhiteSpace(ErrorText))
+            if (string.IsNullOrWhiteSpace(txtHSN.Text))
             {
-                Errors += (!String.IsNullOrWhiteSpace(Errors) ? "\r\n" : "") + ErrorText;
-                if (ErrorControl == null) { ErrorControl = txtHSN; }
-
-            }
-            ErrorText = errorProvider1.GetError(txtItemName);
-            if (!string.IsNullOrWhiteSpace(ErrorText))
-            {
-                Errors += (!String.IsNullOrWhiteSpace(Errors) ? "\r\n" : "") + ErrorText;
-                if (ErrorControl == null) { ErrorControl = txtItemName; }
-
-            }
-            ErrorText = errorProvider1.GetError(txtUnitName);
-            if (!string.IsNullOrWhiteSpace(ErrorText))
-            {
-                Errors += (!String.IsNullOrWhiteSpace(Errors) ? "\r\n" : "") + ErrorText;
-                if (ErrorControl == null) { ErrorControl = txtUnitName; }
-
-            }
-            ErrorText = errorProvider1.GetError(txtPurchaseRate);
-            if (!string.IsNullOrWhiteSpace(ErrorText))
-            {
-                Errors += (!String.IsNullOrWhiteSpace(Errors) ? "\r\n" : "") + ErrorText;
-                if (ErrorControl == null) { ErrorControl = txtPurchaseRate; }
-
-            }
-            ErrorText = errorProvider1.GetError(txtSaleRate);
-            if (!string.IsNullOrWhiteSpace(ErrorText))
-            {
-                Errors += (!String.IsNullOrWhiteSpace(Errors) ? "\r\n" : "") + ErrorText;
-                if (ErrorControl == null) { ErrorControl = txtSaleRate; }
-
-            }
-
-
-            if (Errors != null)
-            {
-                MessageBox.Show($"Please fix following validation errors before saving.\r\n{Errors}", "Saving", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                if (ErrorControl != null)
-                {
-                    ErrorControl.Focus();
-                }
+                MessageBox.Show("Please enter HSN.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtHSN.Focus();
                 return;
             }
 
-
-            //System.Data.SqlClient.SqlCommand cmdNewItemID = new System.Data.SqlClient.SqlCommand("SELECT TOP 1 ItemID FROM tblItem ORDER BY ItemID DESC", Conn);
-            //System.Data.SqlClient.SqlDataAdapter DA = new System.Data.SqlClient.SqlDataAdapter(cmdNewItemID);
-            //System.Data.DataTable dtItemID = new System.Data.DataTable();
-            //DA.Fill(dtItemID);
-
-            //int NewItemID = 0;
-            //if (dtItemID.Rows.Count > 0)
-            //{
-            //    NewItemID = (int)dtItemID.Rows[0][0];
-            //}
-            //NewItemID = NewItemID + 1;
-
-
-            SqlParameter[] myParas = new SqlParameter[] { //Selecting Any part of code by using Alt+ Click
-            new SqlParameter("ItemID", PrimaryKeyValue ?? 0),
-            new SqlParameter("HSN", txtHSN.Text),
-            new SqlParameter("ItemName", txtItemName.Text),
-            new SqlParameter("UnitName", txtUnitName.Text),
-            new SqlParameter("Descr", txtDescr.Text),
-            new SqlParameter("PurchaseRate", decimal.Parse(txtPurchaseRate.Text)),
-            new SqlParameter("SaleRate", decimal.Parse(txtSaleRate.Text)),
-        };
-
-            string CommandText = null;
-            if (PrimaryKeyValue == null)
+            if (string.IsNullOrWhiteSpace(txtItemName.Text))
             {
-                CommandText = @"
-        INSERT INTO tblItem (HSN, ItemName, UnitName, Description, PurchaseRate, SaleRate, rcdt)
-        VALUES (@HSN, @ItemName, @UnitName, @Descr, @PurchaseRate, @SaleRate, GETDATE())";
-
-
+                MessageBox.Show("Please enter Item Name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtItemName.Focus();
+                return;
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(txtUnitName.Text))
             {
-                
-                CommandText = $@"UPDATE tblItem SET 
-            HSN=@HSN,
-            ItemName=@ItemName,
-            UnitName=@UnitName,
-            Description= @Descr,
-            PurchaseRate= @PurchaseRate,
-            SaleRate=@SaleRate,
-            redt= GETDATE()
-            Where ItemID = @ItemID";
-
+                MessageBox.Show("Please enter Unit Name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUnitName.Focus();
+                return;
             }
-            result = cmd.ExecuteNonQuery(CommandText, myParas);
-            
+
+            if (!decimal.TryParse(txtPurchaseRate.Text, out decimal purchaseRate) || purchaseRate < 0)
+            {
+                MessageBox.Show("Please enter a valid Purchase Rate.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPurchaseRate.Focus();
+                return;
+            }
+
+            if (!decimal.TryParse(txtSaleRate.Text, out decimal saleRate) || saleRate < 0)
+            {
+                MessageBox.Show("Please enter a valid Sale Rate.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSaleRate.Focus();
+                return;
+            }
+
+            // === DUPLICATE CHECK ===
+            string checkQuery = @"
+                SELECT COUNT(*) 
+                FROM tblItem 
+                WHERE ItemName = @ItemName AND HSN = @HSN";
+
+            SqlParameter[] checkParams = new SqlParameter[]
+            {
+                new SqlParameter("ItemName", txtItemName.Text.Trim()),
+                new SqlParameter("HSN", txtHSN.Text.Trim())
+            };
+
+            int existingCount = Convert.ToInt32(cmd.ExecuteScalar(checkQuery, checkParams));
+            if (existingCount > 0)
+            {
+                MessageBox.Show("This item already exists. Please check the HSN and Item Name.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtItemName.Focus();
+                return;
+            }
+
+            // === INSERT NEW RECORD ===
+            string insertQuery = @"
+                INSERT INTO tblItem (HSN, ItemName, UnitName, Description, PurchaseRate, SaleRate, rcdt)
+                VALUES (@HSN, @ItemName, @UnitName, @Descr, @PurchaseRate, @SaleRate, GETDATE())";
+
+            SqlParameter[] insertParams = new SqlParameter[]
+            {
+                new SqlParameter("HSN", txtHSN.Text.Trim()),
+                new SqlParameter("ItemName", txtItemName.Text.Trim()),
+                new SqlParameter("UnitName", txtUnitName.Text.Trim()),
+                new SqlParameter("Descr", txtDescr.Text.Trim()),
+                new SqlParameter("PurchaseRate", purchaseRate),
+                new SqlParameter("SaleRate", saleRate)
+            };
+
+            int result = cmd.ExecuteNonQuery(insertQuery, insertParams);
+
             if (result > 0)
             {
-                MessageBox.Show("Record added", "Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Record added successfully.", "Item Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearForm();
                 LoadItems();
             }
-
-            //            //  Always close the connection
-
-
         }
+
+        // ==================== Clear Form ====================
         private void ClearForm()
         {
-            PrimaryKeyValue = null;
-            txtHSN.Text = "";
-            txtItemName.Text = "";
-            txtUnitName.Text = "";
-            txtDescr.Text = "";
-            txtPurchaseRate.Text = "";
-            txtSaleRate.Text = "";
-            btnDelete.Visible = false;
-
-
-            txtHSN.Focus(); // Optional: set focus to first field
+            txtHSN.Clear();
+            txtItemName.Clear();
+            txtUnitName.Clear();
+            txtDescr.Clear();
+            txtPurchaseRate.Clear();
+            txtSaleRate.Clear();
+            txtHSN.Focus();
         }
 
+        // ==================== Load Items ====================
+        public void LoadItems()
+        {
+            dataGridView1.DataSource = cmd.GetData("SELECT * FROM tblItem ORDER BY ItemName");
+
+            if (dataGridView1.Columns["ItemID"] != null)
+                dataGridView1.Columns["ItemID"].Visible = false;
+        }
         private void txtHSN_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtHSN.Text))
@@ -194,7 +146,7 @@ namespace MangoManWinform.Items
         {
             if (string.IsNullOrWhiteSpace(txtUnitName.Text))
         errorProvider1.SetError(txtUnitName, "Please enter Unit Name.");
-    else
+            else
         errorProvider1.SetError(txtUnitName, null);
         }
 
@@ -224,129 +176,117 @@ namespace MangoManWinform.Items
                 errorProvider1.SetError(txtSaleRate, null);
             }
         }
-
-        void LoadItems()
+        private void btnSearch_Click_1(object sender, EventArgs e)
         {
-            // Load data into DataGridView
-            dataGridView1.DataSource = cmd.GetData("SELECT * FROM tblItem ORDER BY ItemName");
+            string searchText = txtSearch.Text.Trim();
+            string query = string.IsNullOrWhiteSpace(searchText)
+                ? "SELECT * FROM tblItem ORDER BY ItemName"
+                : @"SELECT * FROM tblItem
+                    WHERE ItemName LIKE @Search
+                       OR HSN LIKE @Search
+                       OR UnitName LIKE @Search
+                    ORDER BY ItemName";
 
-            // Safely hide ItemID column if it exists
+            SqlParameter[] searchParams = string.IsNullOrWhiteSpace(searchText)
+                ? null
+                : new SqlParameter[] { new SqlParameter("Search", "%" + searchText + "%") };
+
+            dataGridView1.DataSource = cmd.GetData(query, searchParams);
+
             if (dataGridView1.Columns["ItemID"] != null)
-            {
                 dataGridView1.Columns["ItemID"].Visible = false;
-            }
         }
 
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtSearch.Clear();
+            LoadItems();
+        }
+
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int selectedItemId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ItemID"].Value);
+
+                using (ItemEdit editForm = new ItemEdit(selectedItemId))
+                {
+                    editForm.StartPosition = FormStartPosition.CenterParent;
+
+                    // Show popup and reload items only if user saved/deleted
+                    if (editForm.ShowDialog(this) == DialogResult.OK)
+                    {
+                        LoadItems();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to edit.");
+            }
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error while exiting: " + ex.Message);
+            }
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUnitName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void frmItemMaster_Load(object sender, EventArgs e)
+        {
+
+        }
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Validate row index
-            if (e.RowIndex < 0 || e.RowIndex >= dataGridView1.Rows.Count)
-            {
-                MessageBox.Show("Invalid row selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
-            // Safely retrieve ItemID
-            object cellValue = dataGridView1.Rows[e.RowIndex].Cells["ItemID"]?.Value;
-            if (cellValue == null || !int.TryParse(cellValue.ToString(), out int ItemId))
-            {
-                MessageBox.Show("ItemID not found or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Fetch item details
-            DataTable dt = cmd.GetData($"SELECT * FROM tblItem WHERE ItemID = {ItemId}");
-            if (dt.Rows.Count == 0)
-            {
-                MessageBox.Show("No record found. It may have been deleted by another user. Please refresh.", "Item",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            // Populate form fields
-            DataRow dr = dt.Rows[0];
-            PrimaryKeyValue = Convert.ToInt32(dr["ItemID"]);
-            txtHSN.Text = dr["HSN"].ToString();
-            txtItemName.Text = dr["ItemName"].ToString();
-            txtUnitName.Text = dr["UnitName"].ToString();
-            txtDescr.Text = dr["Description"].ToString();
-            txtPurchaseRate.Text = dr["PurchaseRate"].ToString();
-            txtSaleRate.Text = dr["SaleRate"].ToString();
-            btnDelete.Visible = true;
         }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            // Confirm deletion
-            if (MessageBox.Show("Are you sure you want to delete this record?", "Delete Confirmation",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
-            {
-                return;
-            }
-
-            // Execute delete query
-            int result = cmd.ExecuteNonQuery(@"DELETE FROM tblItem WHERE ItemID = @ItemID",
-                new SqlParameter("ItemID", PrimaryKeyValue));
-
-            if (result > 0)
-            {
-                MessageBox.Show("Record deleted successfully.", "Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearForm();
-                LoadItems();
-            }
-        }
-
+        
         private void txtDescr_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-            
-
-        private void btnSearch_Click_1(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
-            string searchText = txtSearch.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                // If nothing entered, load all items
-                LoadItems();
-            }
-            else
-            {
-                // Search by ItemName, HSN, or UnitName
-                string query = @"
-            SELECT * 
-            FROM tblItem
-            WHERE ItemName LIKE @Search
-               OR HSN LIKE @Search
-               OR UnitName LIKE @Search
-            ORDER BY ItemName";
-
-                dataGridView1.DataSource = cmd.GetData(query,
-                    new SqlParameter("Search", "%" + searchText + "%"));
-
-                // Hide ItemID column
-                if (dataGridView1.Columns["ItemID"] != null)
-                {
-                    dataGridView1.Columns["ItemID"].Visible = false;
-                }
-            }
-        
-
-    }
-
-        private void btnReset_Click(object sender, EventArgs e)
+        }
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
-            // Clear the search text
-            txtSearch.Text = "";
 
-            // Reload all records
-            LoadItems();
+        }
+
+        private void txtPurchaseRate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHSN_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
     

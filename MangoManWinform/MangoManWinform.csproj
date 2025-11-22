@@ -46,17 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Items\ItemEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Items\ItemEdit.Designer.cs">
+      <DependentUpon>ItemEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Items\frmItemMaster.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Items\frmItemMaster.Designer.cs">
       <DependentUpon>frmItemMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="Navigation\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Navigation\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Navigation\frmNavigationDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Navigation\frmNavigationDashboard.Designer.cs">
       <DependentUpon>frmNavigationDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\FrmSignup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Navigation\FrmSignup.Designer.cs">
+      <DependentUpon>FrmSignup.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +84,12 @@
       <DependentUpon>frmBaseTemp.cs</DependentUpon>
     </Compile>
     <Compile Include="Template\frmBaseTemplate.cs" />
+    <Compile Include="Transactions\FrmAddNewItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\FrmAddNewItem.Designer.cs">
+      <DependentUpon>FrmAddNewItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transactions\FrmPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,11 +102,17 @@
     <Compile Include="Transactions\FrmOpeningStock.Designer.cs">
       <DependentUpon>FrmOpeningStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transactions\frmPurchaseSearch.cs">
+    <Compile Include="Transactions\frmAddSupply.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Transactions\FrmPurchaseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\FrmPurchaseList.Designer.cs">
+      <DependentUpon>FrmPurchaseList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transactions\frmPurchaseSearch.Designer.cs">
-      <DependentUpon>frmPurchaseSearch.cs</DependentUpon>
+      <DependentUpon>frmAddSupply.cs</DependentUpon>
     </Compile>
     <Compile Include="Transactions\frmSale.cs">
       <SubType>Form</SubType>
@@ -90,17 +120,38 @@
     <Compile Include="Transactions\frmSale.Designer.cs">
       <DependentUpon>frmSale.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transactions\frmSaleSearch.cs">
+    <Compile Include="Transactions\frmAddCust.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Transactions\frmSaleSearch.Designer.cs">
-      <DependentUpon>frmSaleSearch.cs</DependentUpon>
+    <Compile Include="Transactions\frmAddCust.Designer.cs">
+      <DependentUpon>frmAddCust.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transactions\FrmSaleList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\FrmSaleList.Designer.cs">
+      <DependentUpon>FrmSaleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transactions\FrmStockInHand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transactions\FrmStockInHand.Designer.cs">
+      <DependentUpon>FrmStockInHand.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Items\ItemEdit.resx">
+      <DependentUpon>ItemEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Items\frmItemMaster.resx">
       <DependentUpon>frmItemMaster.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Navigation\frmNavigationDashboard.resx">
       <DependentUpon>frmNavigationDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\FrmSignup.resx">
+      <DependentUpon>FrmSignup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,20 +165,32 @@
     <EmbeddedResource Include="Template\frmBaseTemp.resx">
       <DependentUpon>frmBaseTemp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\FrmAddNewItem.resx">
+      <DependentUpon>FrmAddNewItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\frmAddSupply.resx">
+      <DependentUpon>frmAddSupply.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Transactions\FrmOpeningStock.resx">
       <DependentUpon>FrmOpeningStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\FrmPurchase.resx">
       <DependentUpon>FrmPurchase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Transactions\frmPurchaseSearch.resx">
-      <DependentUpon>frmPurchaseSearch.cs</DependentUpon>
+    <EmbeddedResource Include="Transactions\FrmPurchaseList.resx">
+      <DependentUpon>FrmPurchaseList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transactions\frmSale.resx">
       <DependentUpon>frmSale.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Transactions\frmSaleSearch.resx">
-      <DependentUpon>frmSaleSearch.cs</DependentUpon>
+    <EmbeddedResource Include="Transactions\frmAddCust.resx">
+      <DependentUpon>frmAddCust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\FrmSaleList.resx">
+      <DependentUpon>FrmSaleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transactions\FrmStockInHand.resx">
+      <DependentUpon>FrmStockInHand.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
